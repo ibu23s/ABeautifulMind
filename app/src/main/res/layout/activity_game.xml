@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+    <TextView
+        android:id="@+id/tvYourGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Now, it's your game..."
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
+
+    <TextView
+        android:id="@+id/tvYourOpponement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Your opponent plays according to this strategy: "
+        app:layout_constraintEnd_toEndOf="@+id/tvYourGame"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="@+id/tvYourGame"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourGame" />
+
+    <TextView
+        android:id="@+id/tvStrategyType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourOpponement"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/tvYourOpponement"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourOpponement"
+        tools:text="hallo" />
+
+    <Button
+        android:id="@+id/btnChooseActionA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="112dp"
+        android:text="CHOOSE \n ACTION A"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <Button
+        android:id="@+id/btnChooseActionB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="16dp"
+        android:text="CHOOSE \n ACTION B"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="303dp"
+        android:layout_height="139dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStrategyType">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPlayer2A"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:background="@color/purple_500"
+                android:padding="10dp"
+                android:text="A"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPlayer2B"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_200"
+                android:padding="10dp"
+                android:text="B"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPlayer1A"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_500"
+                android:padding="10dp"
+                android:text="A"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPlayer11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="-3 / -3" />
+
+            <TextView
+                android:id="@+id/tvPlayer12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="-3 / -3" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPlayer1B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_200"
+                android:padding="10dp"
+                android:text="B"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPlayer21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="-3 / -3" />
+
+            <TextView
+                android:id="@+id/tvPlayer22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="-3 / -3" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/tvGameInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="24dp"
+        android:text="Hint: All returns are given in the form x/y, when x specifies the
+                        reward for you, and y gives the reward for your opponent. \n Hint: My action is specified by the row. The opponent's action is given by the column."
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <Button
+        android:id="@+id/btnDismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISMISS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameInfo"
+        app:layout_constraintVertical_bias="0.979" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:padding="3dp"
+        android:text="Result:"
+        app:layout_constraintEnd_toEndOf="@+id/tvGameInfo"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="@+id/tvGameInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameInfo" />
+
+    <TextView
+        android:id="@+id/tvYouChose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="You chose: Action"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvResult"
+        app:layout_constraintStart_toStartOf="@+id/tvResult"
+        app:layout_constraintTop_toBottomOf="@+id/tvResult" />
+
+    <TextView
+        android:id="@+id/tvOpponentChose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="Opponent chose: Action"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvYouChose"
+        app:layout_constraintStart_toStartOf="@+id/tvYouChose"
+        app:layout_constraintTop_toBottomOf="@+id/tvYouChose" />
+
+    <TextView
+        android:id="@+id/tvYourScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="Your Score:"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvOpponentChose"
+        app:layout_constraintStart_toStartOf="@+id/tvOpponentChose"
+        app:layout_constraintTop_toBottomOf="@+id/tvOpponentChose" />
+
+    <TextView
+        android:id="@+id/tvOponentScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textSize="12sp"
+        android:text="Oponent Score:"
+        app:layout_constraintEnd_toEndOf="@+id/tvYourScore"
+        app:layout_constraintStart_toStartOf="@+id/tvYourScore"
+        app:layout_constraintTop_toBottomOf="@+id/tvYourScore" />
+
+    <TextView
+        android:id="@+id/tvYouChoseAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="_"
+        app:layout_constraintBottom_toBottomOf="@+id/tvYouChose"
+        app:layout_constraintStart_toEndOf="@+id/tvYouChose"
+        app:layout_constraintTop_toBottomOf="@+id/tvResult" />
+
+    <TextView
+        android:id="@+id/tvOpponentChoseAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="_"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOpponentChose"
+        app:layout_constraintStart_toEndOf="@+id/tvOpponentChose"
+        app:layout_constraintTop_toBottomOf="@+id/tvYouChose" />
+
+    <TextView
+        android:id="@+id/tvYourScoreAction"
+        android:layout_width="66dp"
+        android:layout_height="18dp"
+        android:text="_"
+        app:layout_constraintBottom_toBottomOf="@+id/tvYourScore"
+        app:layout_constraintStart_toEndOf="@+id/tvYourScore"
+        app:layout_constraintTop_toBottomOf="@+id/tvOpponentChose" />
+
+    <TextView
+        android:id="@+id/tvOponentScoreAction"
+        android:layout_width="96dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="4dp"
+        android:text="_"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOponentScore"
+        app:layout_constraintStart_toEndOf="@+id/tvOponentScore"
+        app:layout_constraintTop_toTopOf="@+id/tvOponentScore"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/probe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="124dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
