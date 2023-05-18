@@ -15,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var radioGroup: RadioGroup
+    private var myscore = 0;
+    private var opponementScore = 0;
+    private var increment = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,16 +51,19 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
         // Punkte für mein score
-        val tvMyScorePoints = findViewById<TextView>(R.id.tvMyScorePoints)
-        val text1 = intent.getStringExtra("action")
-        tvMyScorePoints.text = text1
+        val tvMyScorePoints = findViewById<TextView>(R.id.tvMyScorePoints) //TextField
+        val text1 = intent.getIntExtra("action",0)
+        myscore = text1
+        tvMyScorePoints.text = text1.toString()
 
         // Punkte für Oppponent score
         val tvOppnentScorePoints = findViewById<TextView>(R.id.tvOppnentScorePoints)
-        val text2 = intent.getStringExtra("action2")
-        tvOppnentScorePoints.text = text2
+        val text2 = intent.getIntExtra("action2",0)
+        opponementScore = text2
+        tvOppnentScorePoints.text = text2.toString()
+
+        val zero = 0
 
 
 
@@ -74,6 +80,8 @@ class MainActivity : AppCompatActivity() {
             } else{
                 //Übergebe mein Radiogroup an die nächste Activity und gehe in der nächte activity
                 val intent = Intent(this, GameActivity::class.java)
+                intent.putExtra("myscore",myscore)
+                intent.putExtra("opponementScore",opponementScore)
                 val selectedOption = radioGroup.checkedRadioButtonId
                 intent.putExtra("selectedOption", selectedOption)
                 counter++
@@ -81,5 +89,16 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        val startOver = findViewById<Button>(R.id.btnStartOver)
+        startOver.setOnClickListener{
+            myscore = zero
+            opponementScore = zero
+            tvMyScorePoints.text = "0"
+            tvOppnentScorePoints.text = "0"
+
+        }
+
+
     }
 }
