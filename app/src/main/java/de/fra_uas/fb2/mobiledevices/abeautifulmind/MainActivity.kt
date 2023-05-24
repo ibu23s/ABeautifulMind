@@ -1,5 +1,6 @@
 package de.fra_uas.fb2.mobiledevices.abeautifulmind
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -17,7 +18,17 @@ class MainActivity : AppCompatActivity() {
     private lateinit var radioGroup: RadioGroup
     private var myscore = 0;
     private var opponementScore = 0;
-    private var increment = 0;
+    private var mycounter = 0
+
+    //Globale Variable
+    public class Global : Application() {
+        companion object {
+            var game_counter = 0
+            var myscore = 0
+            var myopponent = 0
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         val radio_greedy = findViewById<RadioButton>(R.id.radio_Greedy)
         val radio_cautious = findViewById<RadioButton>(R.id.radio_Cautious)
         val nashImage = findViewById<ImageView>(R.id.IvnashImage)
+        val gamecounterView = findViewById<TextView>(R.id.tvAmountGamesPlayed)
 
         // Wenn man Nash auswählt, zeigen wir ein foto
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -51,27 +63,25 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        // Punkte für mein score
+        //Score Views
         val tvMyScorePoints = findViewById<TextView>(R.id.tvMyScorePoints) //TextField
-        val text1 = intent.getIntExtra("action",0)
-        myscore = text1
-        tvMyScorePoints.text = text1.toString()
-
-        // Punkte für Oppponent score
         val tvOppnentScorePoints = findViewById<TextView>(R.id.tvOppnentScorePoints)
-        val text2 = intent.getIntExtra("action2",0)
-        opponementScore = text2
-        tvOppnentScorePoints.text = text2.toString()
+
 
         val zero = 0
+
+        //MyScore TextView
+        tvMyScorePoints.text = Global.myscore.toString()
+
+        //Opponent TextView
+        tvOppnentScorePoints.text = Global.myopponent.toString()
+
+        //Games Counter View
+        gamecounterView.text = Global.game_counter.toString()
 
 
 
         val btnGenerateGame = findViewById<Button>(R.id.btnGenerateGame)
-
-        val tvAmountGamesPlayed = findViewById<TextView>(R.id.tvAmountGamesPlayed)
-        var counter = 0
-
         btnGenerateGame.setOnClickListener {
             //Wenn in radioGroup nichts ausgewählt worden ist, Toast anzeigen
             if (radioGroup.checkedRadioButtonId == -1) {
@@ -80,12 +90,8 @@ class MainActivity : AppCompatActivity() {
             } else{
                 //Übergebe mein Radiogroup an die nächste Activity und gehe in der nächte activity
                 val intent = Intent(this, GameActivity::class.java)
-                intent.putExtra("myscore",myscore)
-                intent.putExtra("opponementScore",opponementScore)
                 val selectedOption = radioGroup.checkedRadioButtonId
                 intent.putExtra("selectedOption", selectedOption)
-                counter++
-                tvAmountGamesPlayed.text = counter.toString()
                 startActivity(intent)
             }
         }

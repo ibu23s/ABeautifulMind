@@ -192,11 +192,11 @@
         android:id="@+id/tvGameInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
         android:layout_marginTop="24dp"
         android:text="Hint: All returns are given in the form x/y, when x specifies the
                         reward for you, and y gives the reward for your opponent. \n Hint: My action is specified by the row. The opponent's action is given by the column."
         android:textAlignment="center"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
@@ -263,8 +263,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
-        android:textSize="12sp"
         android:text="Oponent Score:"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/tvYourScore"
         app:layout_constraintStart_toStartOf="@+id/tvYourScore"
         app:layout_constraintTop_toBottomOf="@+id/tvYourScore" />
@@ -273,8 +273,8 @@
         android:id="@+id/tvYouChoseAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
         android:text="_"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvYouChose"
         app:layout_constraintStart_toEndOf="@+id/tvYouChose"
         app:layout_constraintTop_toBottomOf="@+id/tvResult" />
@@ -283,16 +283,16 @@
         android:id="@+id/tvOpponentChoseAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
         android:text="_"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvOpponentChose"
         app:layout_constraintStart_toEndOf="@+id/tvOpponentChose"
         app:layout_constraintTop_toBottomOf="@+id/tvYouChose" />
 
     <TextView
         android:id="@+id/tvYourScoreAction"
-        android:layout_width="66dp"
-        android:layout_height="18dp"
+        android:layout_width="20dp"
+        android:layout_height="19dp"
         android:text="_"
         app:layout_constraintBottom_toBottomOf="@+id/tvYourScore"
         app:layout_constraintStart_toEndOf="@+id/tvYourScore"
@@ -300,15 +300,12 @@
 
     <TextView
         android:id="@+id/tvOponentScoreAction"
-        android:layout_width="96dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="14dp"
+        android:layout_height="18dp"
         android:text="_"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvOponentScore"
-        app:layout_constraintStart_toEndOf="@+id/tvOponentScore"
-        app:layout_constraintTop_toTopOf="@+id/tvOponentScore"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/tvOponentScore" />
 
     <TextView
         android:id="@+id/probe"
@@ -318,5 +315,23 @@
         android:layout_marginTop="124dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvYourScoreAction"
+        app:layout_constraintStart_toEndOf="@+id/tvYourScoreAction" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOponentScoreAction"
+        app:layout_constraintStart_toEndOf="@+id/tvOponentScoreAction" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.*
 import androidx.core.content.ContextCompat
 
@@ -20,17 +21,16 @@ class  GameActivity : AppCompatActivity() {
 
         val nashGleichgewichte = mutableListOf<Pair<Int, Int>>()
         val textViewList = mutableListOf<TextView>()
-        val anzahlGeaenderteHintergruende = nashGleichgewichte.size
 
         val btnDismiss = findViewById<Button>(R.id.btnDismiss)
+
 
 
 
         //Nehmen den ausgewählten wert von der Radiogroup
         val intent = intent
         val selectedOption = intent.getIntExtra("selectedOption", 0)
-        val myscore = intent.getIntExtra("myscore", 0)
-        val opponementScore = intent.getIntExtra("opponementScore", 0)
+
 
         // Definition der boxen und wertebereich
         val tvPlayer11 = findViewById<TextView>(R.id.tvPlayer11)
@@ -44,7 +44,6 @@ class  GameActivity : AppCompatActivity() {
 
 
         //Random zahlen in die textView anzeigen
-
         tvPlayer11.text = "${Pair1.first} / ${Pair1.second}"
         tvPlayer12.text = "${Pair2.first} / ${Pair2.second}"
         tvPlayer21.text = "${Pair3.first} / ${Pair3.second}"
@@ -88,12 +87,14 @@ class  GameActivity : AppCompatActivity() {
                     tvYourScoreAction.setText("${Pair1.first}")
                     tvOponentScoreAction.setText("${Pair1.second}")
                     tvPlayer11.setBackgroundColor(color)
+                    MainActivity.Global.game_counter++
                 }
                 val inside2 = tvOpponentChoseAction.text.toString()
                 if (inside2[0] == 'B') {
                     tvYourScoreAction.setText("${Pair2.first}")
                     tvOponentScoreAction.setText("${Pair2.second}")
                     tvPlayer12.setBackgroundColor(color)
+                    MainActivity.Global.game_counter++
                 }
             }
             // #####################################################      Greedy
@@ -104,6 +105,7 @@ class  GameActivity : AppCompatActivity() {
                         tvOpponentChoseAction.setText("B")
                         tvYourScoreAction.setText("${Pair2.first}")
                         tvPlayer12.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
 
                     Pair3.second > Pair1.second && Pair3.second > Pair2.second && Pair3.second > Pair4.second -> {
@@ -111,6 +113,7 @@ class  GameActivity : AppCompatActivity() {
                         tvOpponentChoseAction.setText("A")
                         tvYourScoreAction.setText("${Pair3.first}")
                         tvPlayer21.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
 
                     Pair4.second > Pair1.second && Pair4.second > Pair2.second && Pair4.second > Pair3.second -> {
@@ -118,6 +121,7 @@ class  GameActivity : AppCompatActivity() {
                         tvOpponentChoseAction.setText("B")
                         tvYourScoreAction.setText("${Pair4.first}")
                         tvPlayer22.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
 
                     else -> {
@@ -125,6 +129,7 @@ class  GameActivity : AppCompatActivity() {
                         tvYourScoreAction.setText("${Pair1.first}")
                         tvOpponentChoseAction.setText("A")
                         tvPlayer11.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
                 }
 
@@ -172,6 +177,7 @@ class  GameActivity : AppCompatActivity() {
                         tvOpponentChoseAction.setText("B")
                         tvYourScoreAction.setText("${Pair2.first}")
                         tvPlayer12.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
 
                     differenz3 < differenz1 && differenz3 < differenz2 && differenz3 < differenz4 -> {
@@ -179,6 +185,7 @@ class  GameActivity : AppCompatActivity() {
                         tvOpponentChoseAction.setText("A")
                         tvYourScoreAction.setText("${Pair3.first}")
                         tvPlayer21.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
 
                     differenz4 < differenz1 && differenz4 < differenz2 && differenz4 < differenz3 -> {
@@ -186,6 +193,7 @@ class  GameActivity : AppCompatActivity() {
                         tvOpponentChoseAction.setText("B")
                         tvYourScoreAction.setText("${Pair4.first}")
                         tvPlayer22.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
 
                     else -> {
@@ -193,6 +201,7 @@ class  GameActivity : AppCompatActivity() {
                         tvYourScoreAction.setText("${Pair1.first}")
                         tvOpponentChoseAction.setText("A")
                         tvPlayer11.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
                 }
             }
@@ -244,28 +253,35 @@ class  GameActivity : AppCompatActivity() {
                             for (nashGleichgewicht in nashGleichgewichte) {
                                 val textViewIndex = nashGleichgewicht.first * 2 + nashGleichgewicht.second
                                 textViewList[textViewIndex].setBackgroundColor(color)
+                                MainActivity.Global.game_counter++
 
                                 if (tvPlayer11.background is ColorDrawable && (tvPlayer11.background as ColorDrawable).color == color) {
                                     tvOpponentChoseAction.text = "A"
                                     tvYourScoreAction.text = ("${Pair1.first}")
                                     tvOponentScoreAction.setText("${Pair1.second}")
+                                    MainActivity.Global.game_counter++
 
                                 } else if (tvPlayer12.background is ColorDrawable && (tvPlayer12.background as ColorDrawable).color == color) {
                                     tvOpponentChoseAction.text = "B"
                                     tvYourScoreAction.text = ("${Pair2.first}")
                                     tvOponentScoreAction.setText("${Pair2.second}")
+                                    MainActivity.Global.game_counter++
                                 } else if (tvPlayer21.background is ColorDrawable && (tvPlayer21.background as ColorDrawable).color == color) {
                                     tvOpponentChoseAction.text = "A"
                                     tvYourScoreAction.text = ("${Pair3.first}")
                                     tvOponentScoreAction.setText("${Pair3.second}")
+                                    MainActivity.Global.game_counter++
                                 } else if (tvPlayer22.background is ColorDrawable && (tvPlayer22.background as ColorDrawable).color == color) {
                                     tvOpponentChoseAction.text = "B"
                                     tvYourScoreAction.text = ("${Pair4.first}")
                                     tvOponentScoreAction.setText("${Pair4.second}")
+                                    MainActivity.Global.game_counter++
                                 }
                             }
-                            Toast.makeText(this, "There is a unique Nash equilibrium in this game:\nMy action: A\nOpponement action: ${tvOpponentChoseAction}",
+                                Toast.makeText(this, "There is a unique Nash equilibrium in this game:\nMy action: A\nOpponement action: ${tvOpponentChoseAction}",
                                 Toast.LENGTH_LONG).show()
+
+
                         }
 
                         anzahlGeaenderteHintergruende > 1 -> {
@@ -278,10 +294,10 @@ class  GameActivity : AppCompatActivity() {
                         }
                     }
                 }
-                if (anzahlGeaenderteHintergruende == 0)
-                    Toast.makeText(this, "There is no Nash equilibrium in this game.\nOpponement cannot choose an action.\nGame cannot be finishe.", Toast.LENGTH_SHORT).show()
+                if (anzahlGeaenderteHintergruende == 0) {
+                    val toast = Toast.makeText(this, "There is no Nash equilibrium in this game.\nOpponement cannot choose an action.\nGame cannot be finishe.", Toast.LENGTH_SHORT).show()
 
-
+                }
             }
         }
 
@@ -309,12 +325,14 @@ class  GameActivity : AppCompatActivity() {
                         tvYourScoreAction.setText("${Pair1.first}")
                         tvOponentScoreAction.setText("${Pair1.second}")
                         tvPlayer11.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
                     val inside2 = tvOpponentChoseAction.text.toString()
                     if (inside2[0] == 'B') {
                         tvYourScoreAction.setText("${Pair2.first}")
                         tvOponentScoreAction.setText("${Pair2.second}")
                         tvPlayer12.setBackgroundColor(color)
+                        MainActivity.Global.game_counter++
                     }
                 }
                 // #####################################################      Greedy
@@ -325,6 +343,7 @@ class  GameActivity : AppCompatActivity() {
                             tvOpponentChoseAction.setText("B")
                             tvYourScoreAction.setText("${Pair2.first}")
                             tvPlayer12.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
 
                         Pair3.second > Pair1.second && Pair3.second > Pair2.second && Pair3.second > Pair4.second -> {
@@ -332,6 +351,7 @@ class  GameActivity : AppCompatActivity() {
                             tvOpponentChoseAction.setText("A")
                             tvYourScoreAction.setText("${Pair3.first}")
                             tvPlayer21.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
 
                         Pair4.second > Pair1.second && Pair4.second > Pair2.second && Pair4.second > Pair3.second -> {
@@ -339,6 +359,7 @@ class  GameActivity : AppCompatActivity() {
                             tvOpponentChoseAction.setText("B")
                             tvYourScoreAction.setText("${Pair4.first}")
                             tvPlayer22.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
 
                         else -> {
@@ -346,6 +367,7 @@ class  GameActivity : AppCompatActivity() {
                             tvYourScoreAction.setText("${Pair1.first}")
                             tvOpponentChoseAction.setText("A")
                             tvPlayer11.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
                     }
 
@@ -393,6 +415,7 @@ class  GameActivity : AppCompatActivity() {
                             tvOpponentChoseAction.setText("B")
                             tvYourScoreAction.setText("${Pair2.first}")
                             tvPlayer12.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
 
                         differenz3 < differenz1 && differenz3 < differenz2 && differenz3 < differenz4 -> {
@@ -400,6 +423,7 @@ class  GameActivity : AppCompatActivity() {
                             tvOpponentChoseAction.setText("A")
                             tvYourScoreAction.setText("${Pair3.first}")
                             tvPlayer21.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
 
                         differenz4 < differenz1 && differenz4 < differenz2 && differenz4 < differenz3 -> {
@@ -407,6 +431,7 @@ class  GameActivity : AppCompatActivity() {
                             tvOpponentChoseAction.setText("B")
                             tvYourScoreAction.setText("${Pair4.first}")
                             tvPlayer22.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
 
                         else -> {
@@ -414,6 +439,7 @@ class  GameActivity : AppCompatActivity() {
                             tvYourScoreAction.setText("${Pair1.first}")
                             tvOpponentChoseAction.setText("A")
                             tvPlayer11.setBackgroundColor(color)
+                            MainActivity.Global.game_counter++
                         }
                     }
                 }
@@ -427,56 +453,35 @@ class  GameActivity : AppCompatActivity() {
             }
 
 
-            // Definieren was auf die mainActivity als score zurück geht
-            var text1 = Pair1.first.toInt()
-            var text2 = Pair1.second.toInt()
-            var text3 = Pair2.first.toInt()
-            var text4 = Pair2.second.toInt()
-            var text5 = Pair3.first.toInt()
-            var text6 = Pair3.second.toInt()
-            var text7 = Pair4.first.toInt()
-            var text8 = Pair4.second.toInt()
 
 
 
             btnDismiss.setOnClickListener {
                 //Zurück in die erste acticity
                 val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("increment", btnDismiss.isEnabled)
                 startActivity(intent)
+
 
                 // Nach click übertragen die punkte an die erste activity
                 if (tvPlayer11.background is ColorDrawable && (tvPlayer11.background as ColorDrawable).color == color) {
-                    val intent7 = Intent(this, MainActivity::class.java)
-                    text1 += myscore
-                    text2 += opponementScore
-                    intent7.putExtra("action", text1)
-                    intent7.putExtra("action2", text2)
-                    startActivity(intent7)
+                    MainActivity.Global.myscore += Pair1.first.toInt()
+                    MainActivity.Global.myopponent += Pair1.second.toInt()
+                    startActivity(intent)
 
                 } else if (tvPlayer12.background is ColorDrawable && (tvPlayer12.background as ColorDrawable).color == color) {
-                    val intent8 = Intent(this, MainActivity::class.java)
-                    text3 += myscore
-                    text4 += opponementScore
-                    intent8.putExtra("action", text3)
-                    intent8.putExtra("action2", text4)
-                    startActivity(intent8)
+                    MainActivity.Global.myscore += Pair2.first.toInt()
+                    MainActivity.Global.myopponent += Pair2.second.toInt()
+                    startActivity(intent)
 
                 } else if (tvPlayer21.background is ColorDrawable && (tvPlayer21.background as ColorDrawable).color == color) {
-                    val intent8 = Intent(this, MainActivity::class.java)
-                    text5 += myscore
-                    text6 += opponementScore
-                    intent8.putExtra("action", text5)
-                    intent8.putExtra("action2", text6)
-                    startActivity(intent8)
+                    MainActivity.Global.myscore += Pair3.first.toInt()
+                    MainActivity.Global.myopponent += Pair3.second.toInt()
+                    startActivity(intent)
 
                 } else if (tvPlayer22.background is ColorDrawable && (tvPlayer22.background as ColorDrawable).color == color) {
-                    val intent8 = Intent(this, MainActivity::class.java)
-                    text7 += myscore
-                    text8 += opponementScore
-                    intent8.putExtra("action", text7)
-                    intent8.putExtra("action2", text8)
-                    startActivity(intent8)
+                    MainActivity.Global.myscore += Pair4.first.toInt()
+                    MainActivity.Global.myopponent += Pair4.second.toInt()
+                    startActivity(intent)
                 }
 
                 if (btnActionA.isEnabled == true && btnActionB.isEnabled == true  ) {
@@ -484,7 +489,6 @@ class  GameActivity : AppCompatActivity() {
                 }
 
             }
-
 
     }
 
